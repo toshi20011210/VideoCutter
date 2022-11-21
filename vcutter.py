@@ -1,19 +1,44 @@
 from moviepy.editor import *
 
-# 編集したい動画のパス
-file_path = "hyokkorihan.mp4"
+###input### 
+#original video date 
+date = "20//"
+#artist name 
+artistName = ""
+#song names
+songName = ["a", "b", "c"]
+#start times in seconds + video ending time
+startTime = ["10:3", "2:10:3", "1:8:9", "1:11:12"]
+# original video path
+originalVideo = ".mp4"
+# save path location 
+savePathLoc = ""
+###########
 
-# 切り出し開始時刻。秒で表現
-start = 19    
+i=0
+for i in range (0, len(songName)):
+    # save path
+    savePath = savePathLoc + songName[i] + " " + artistName + " " + date + ".mp4"
 
-# 切り出し終了時刻。同じく秒で表現
-end = 24    
+    #time to secs coversion [start]
+    v = startTime[i].split(':')
+    if len(v) == 1:
+        sec = int(v[0])
+    if len(v) == 2:
+        sec = int(v[0]) * 60 + int(v[1])
+    if len(v) == 3:
+        sec = int(v[0]) * 3600 + int(v[1]) * 60 + int(v[2])
+    #time to secs [end]
+    v2 = startTime[i+1].split(':')
+    if len(v2) == 1:
+        sec2 = int(v2[0])
+    if len(v2) == 2:
+        sec2 = int(v2[0]) * 60 + int(v2[1])
+    if len(v2) == 3:
+        sec2 = int(v2[0]) * 3600 + int(v2[1]) * 60 + int(v2[2])
 
-# 編集後のファイル保存先のパス
-save_path = "cat_shiraishi.mp4"    
+    # edit video
+    video = VideoFileClip(originalVideo).subclip(int(sec), int(sec2)-1)
 
-# ビデオのカット開始
-video = VideoFileClip(file_path).subclip(start, end)    
-
-# fps and save
-video.write_videofile(save_path,fps=29)    
+    # fps and save
+    video.write_videofile(savePath,fps=29)
