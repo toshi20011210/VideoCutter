@@ -2,7 +2,7 @@ from moviepy.editor import *
 
 ###input### 
 #original video date 
-# dont use "/" in strings as it could corrupt locations
+# "/" cannot be used
 date = ""
 #artist name 
 artistName = ""
