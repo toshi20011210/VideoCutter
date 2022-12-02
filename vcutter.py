@@ -2,7 +2,8 @@ from moviepy.editor import *
 
 ###input### 
 #original video date 
-date = "20//"
+# dont use "/" in strings as it could corrupt locations
+date = ""
 #artist name 
 artistName = ""
 #song names
