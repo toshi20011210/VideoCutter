@@ -15,6 +15,8 @@ startTime = ["10:3", "2:10:3", "1:8:9", "1:11:12"]
 originalVideo = ".mp4"
 # save path location 
 savePathLoc = ""
+# resolution height ///// such as (480, 720, 1080) edfault 720
+res = 720
 
 #################
 
@@ -43,5 +45,7 @@ for i in range (0, len(songName)):
     # edit video
     video = VideoFileClip(originalVideo).subclip(int(sec), int(sec2)-1)
 
+    clip_resized = video.resize(height=res) 
+    
     # fps and save
-    video.write_videofile(savePath,fps=29)
+    clip_resized.write_videofile(savePath,fps=29)
