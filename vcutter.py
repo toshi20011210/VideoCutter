@@ -1,8 +1,9 @@
 from moviepy.editor import *
 
-###input### 
+######input###### 
+
 #original video date 
-# "/" cannot be used
+# "/" cannot be used due to location errors
 date = ""
 #artist name 
 artistName = ""
@@ -14,7 +15,8 @@ startTime = ["10:3", "2:10:3", "1:8:9", "1:11:12"]
 originalVideo = ".mp4"
 # save path location 
 savePathLoc = ""
-###########
+
+#################
 
 i=0
 for i in range (0, len(songName)):
