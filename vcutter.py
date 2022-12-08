@@ -2,29 +2,43 @@ from moviepy.editor import *
 
 ######input###### 
 
+
+
 #original video date 
 # "/" cannot be used due to location errors
 date = ""
 #artist name 
 artistName = ""
-#song names
-songName = ["a", "b", "c"]
-#start times in seconds + video ending time
-startTime = ["10:3", "2:10:3", "1:8:9", "1:11:12"]
+#video ending time
+endTime = ""
 # original video path
 originalVideo = ".mp4"
 # save path location 
 savePathLoc = ""
+#constructed comment input (song and time splitted with row, space between the time and the song name)
+inputString = """"""
 # resolution height ///// such as (480, 720, 1080) default 720
 res = 720
 
+
+
 #################
+
+tempArray = inputString.splitlines()
+songName = []
+startTime = []
+
+j=0
+for j in range (0, len(tempArray)):
+    splittedTempArray = tempArray[j].split(" ", 1)
+    startTime.append(splittedTempArray[0])
+    songName.append(splittedTempArray[1])
+startTime.append(endTime)
 
 i=0
 for i in range (0, len(songName)):
     # save path
     savePath = savePathLoc + songName[i] + " " + artistName + " " + date + ".mp4"
-
     #time to secs coversion [start]
     v = startTime[i].split(':')
     if len(v) == 1:
